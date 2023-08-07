@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    //Post data
     public function store(Request $request)
     {
         $request->validate([
@@ -24,12 +25,14 @@ class PostController extends Controller
         return response()->json(['message' => 'Post created successfully'], 201);
     }
 
+    //Get data
     public function index()
     {
         $posts = Post::all();
         return response()->json($posts);
     }
 
+    //Edit data
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -47,6 +50,7 @@ class PostController extends Controller
         return response()->json(['message' => 'Post updated successfully'], 200);
     }
 
+    //Delete data
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
